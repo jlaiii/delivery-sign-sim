@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Package Delivery Simulator</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f2937'/%3E%3Cpath d='M32 14 14 24l18 10 18-10-18-10z' fill='none' stroke='%23f59e0b' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M14 32v18l18 10V42' fill='none' stroke='%23f59e0b' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M50 32v18L32 60' fill='none' stroke='%236366f1' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ icon sprite ============ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3 3 8v8l9 5 9-5V8l-9-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3 8l9 5 9-5M12 13v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 7h3l2-2h6l2 2h3v12H4V7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.6" fill="currentColor"/><path d="M3 17l5-4 4 3 4-4 5 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v4h4M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-6v-6h-4v6H4v-9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bld" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M4 21h16M12 7h4v14h-4M8 9h1m-1 4h1m-1 4h1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v11H2zM13 10h4l4 4v3h-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="1.8" fill="currentColor"/><circle cx="17" cy="17.5" r="1.8" fill="currentColor"/></symbol>
+</svg>
+
+<div id="toast" hidden></div>
+
+<!-- ================= HUB ================= -->
+<div id="view-hub" class="view">
+  <div class="hub-top">
+    <span class="hub-brand">Package Delivery Simulator</span>
+    <button class="link-btn" id="btn-global-reset" type="button"><svg class="ic"><use href="#i-refresh"/></svg>Reset all</button>
+  </div>
+  <div class="hub-hero">
+    <h1>Pick a carrier</h1>
+    <p>Each route is a full delivery day — drive a stop, capture the signature, snap the proof photo, mark it delivered.</p>
+  </div>
+  <div class="carrier-grid" id="carrier-grid"></div>
+  <div class="hub-foot">
+    <p>Simulation for demonstration purposes only. Not affiliated with, endorsed by, or connected to any delivery carrier. No data leaves this device.</p>
+    <p>Completed stops are stored only in this browser. Use <button class="link-btn" data-reset>Reset all</button> to clear them and run the demo again.</p>
+  </div>
+</div>
+
+<!-- ================= ROUTE ================= -->
+<div id="view-route" class="view" hidden>
+  <header class="chrome">
+    <button class="icon-btn" data-back="hub" type="button" aria-label="Back"><svg class="ic"><use href="#i-back"/></svg></button>
+    <div class="wm" id="wm-route"></div>
+    <span class="chrome-spacer"></span>
+  </header>
+  <div class="route-head">
+    <div>
+      <div class="route-title" id="route-title"></div>
+      <div class="route-date" id="route-date"></div>
+    </div>
+    <span class="route-tag" id="route-tag"></span>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n" id="stat-left">–</div><div class="stat-l">Remaining</div></div>
+    <div class="stat"><div class="stat-n" id="stat-done">–</div><div class="stat-l">Delivered</div></div>
+    <div class="stat"><div class="stat-n" id="stat-started">–</div><div class="stat-l">Route start</div></div>
+  </div>
+  <div class="list" id="stops-list"></div>
+  <div class="route-foot">
+    <p id="route-foot-text"></p>
+  </div>
+</div>
+
+<!-- ================= STOP ================= -->
+<div id="view-stop" class="view" hidden>
+  <header class="chrome">
+    <button class="icon-btn" id="stop-back" type="button" aria-label="Back"><svg class="ic"><use href="#i-back"/></svg></button>
+    <div class="wm" id="wm-stop"></div>
+    <span class="chrome-spacer"></span>
+  </header>
+  <div id="stop-body"></div>
+</div>
+
+<!-- ================= SIGNATURE ================= -->
+<div id="view-sig" class="view" hidden>
+  <header class="chrome chrome-solid">
+    <button class="icon-btn" id="sig-cancel" type="button" aria-label="Cancel"><svg class="ic"><use href="#i-back"/></svg></button>
+    <div class="wm" id="wm-sig"></div>
+    <span class="chrome-spacer"></span>
+  </header>
+  <div class="flow-body">
+    <div class="flow-step" id="sig-req-chip">Signature required</div>
+    <h2 class="flow-h">Have the customer sign here</h2>
+    <p class="flow-sub" id="sig-sub"></p>
+    <label class="field">
+      <span class="field-label">Recipient name</span>
+      <input id="sig-name" type="text" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Printed name">
+    </label>
+    <div class="sig-box">
+      <canvas id="sig-canvas" width="1400" height="440"></canvas>
+      <div class="sig-hint" id="sig-hint">Signature</div>
+    </div>
+    <div class="sig-tools">
+      <button class="ghost-btn" id="sig-clear" type="button"><svg class="ic"><use href="#i-refresh"/></svg>Clear</button>
+      <span class="sig-note" id="sig-note"></span>
+    </div>
+    <p class="microcopy" id="sig-legal"></p>
+    <button class="primary-btn" id="sig-continue" type="button" disabled>Continue <svg class="ic"><use href="#i-chev"/></svg></button>
+  </div>
+</div>
+
+<!-- ================= PHOTO ================= -->
+<div id="view-photo" class="view" hidden>
+  <header class="chrome chrome-solid">
+    <button class="icon-btn" id="photo-back" type="button" aria-label="Back"><svg class="ic"><use href="#i-back"/></svg></button>
+    <div class="wm" id="wm-photo"></div>
+    <span class="chrome-spacer"></span>
+  </header>
+  <div class="flow-body">
+    <div class="flow-step" id="photo-step-chip">Proof of delivery</div>
+    <h2 class="flow-h" id="photo-h">Take a photo of the delivery</h2>
+    <p class="flow-sub" id="photo-sub"></p>
+    <div class="photo-stage" id="photo-stage">
+      <video id="cam-live" autoplay playsinline muted hidden></video>
+      <canvas id="cam-shot" hidden></canvas>
+      <div class="photo-empty" id="photo-empty">
+        <svg class="ic ic-xl"><use href="#i-cam"/></svg>
+        <p id="photo-empty-text">Show the package at the door</p>
+      </div>
+    </div>
+    <div class="photo-actions" id="photo-actions">
+      <button class="primary-btn" id="btn-cam" type="button"><svg class="ic"><use href="#i-cam"/></svg>Take photo</button>
+      <button class="ghost-btn" id="btn-file" type="button"><svg class="ic"><use href="#i-img"/></svg>Choose photo</button>
+      <input type="file" id="file-input" accept="image/*" capture="environment" hidden>
+    </div>
+    <button class="link-btn center" id="photo-skip" type="button">Continue without a photo</button>
+  </div>
+</div>
+
+<!-- ================= PROOF OF DELIVERY ================= -->
+<div id="view-pod" class="view" hidden>
+  <header class="chrome chrome-solid">
+    <button class="icon-btn" data-back="route" type="button" aria-label="Back"><svg class="ic"><use href="#i-back"/></svg></button>
+    <div class="wm" id="wm-pod"></div>
+    <span class="chrome-spacer"></span>
+  </header>
+  <div id="pod-body"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
