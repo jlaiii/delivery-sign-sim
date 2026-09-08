@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Package Delivery Simulator</title>
+<title>Delivery Sign Simulator</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f2937'/%3E%3Cpath d='M32 14 14 24l18 10 18-10-18-10z' fill='none' stroke='%23f59e0b' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M14 32v18l18 10V42' fill='none' stroke='%23f59e0b' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M50 32v18L32 60' fill='none' stroke='%236366f1' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -37,14 +37,17 @@
 <!-- ================= HUB ================= -->
 <div id="view-hub" class="view">
   <div class="hub-top">
-    <span class="hub-brand">Package Delivery Simulator</span>
+    <span class="hub-brand">Delivery Sign Simulator</span>
     <button class="link-btn" id="btn-global-reset" type="button"><svg class="ic"><use href="#i-refresh"/></svg>Reset all</button>
   </div>
   <div class="hub-hero">
-    <h1>Pick a carrier</h1>
-    <p>Each route is a full delivery day — drive a stop, capture the signature, snap the proof photo, mark it delivered.</p>
+    <h1>Pick a delivery type</h1>
+    <p>Every route is a full delivery day — courier packages or food orders. Drive a stop, capture the signature, snap the proof photo, mark it delivered.</p>
   </div>
+  <div class="hub-sec-label">Courier packages</div>
   <div class="carrier-grid" id="carrier-grid"></div>
+  <div class="hub-sec-label">Food delivery</div>
+  <div class="carrier-grid" id="food-grid"></div>
   <div id="preset-slot"></div>
   <div class="hub-foot">
     <p>Simulation for demonstration purposes only. Not affiliated with, endorsed by, or connected to any delivery carrier. No data leaves this device.</p>
@@ -96,7 +99,7 @@
   </header>
   <div class="flow-body">
     <div class="flow-step" id="sig-req-chip">Signature required</div>
-    <h2 class="flow-h">Have the customer sign here</h2>
+    <h2 class="flow-h" id="sig-h2">Have the customer sign here</h2>
     <p class="flow-sub" id="sig-sub"></p>
     <label class="field">
       <span class="field-label">Recipient name</span>

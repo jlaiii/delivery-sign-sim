@@ -102,9 +102,70 @@ const CARRIERS = {
       { n: 'Olivia Pena', p: '956-555-0158', a: '550 San Jacinto Blvd', c: 'Brownsville, TX 78520', svc: 'Amazon Standard', w: '2.3 lb', trk: 'TBA123987654000', mode: 'sig', note: 'Customer requested hand delivery to resident.' },
       { n: 'Noah Rodriguez', p: '956-555-0119', a: '117 W Price Rd', c: 'Brownsville, TX 78520', svc: 'Amazon Standard', w: '1.9 lb', trk: 'TBA556677889900', mode: 'release', note: null }
     ]
+  },
+  doordash: {
+    id: 'doordash', kind: 'food', brand: 'DoorDash', wm: '<span class="wm-doordash">Door<i>Dash</i></span>',
+    sub: 'DASHER · ROUTE', cls: 'doordash', defaultSvc: 'DoorDash order', unitWord: 'orders', noun: 'order',
+    sigChip: 'Hand to customer', releaseLabel: 'Leave at door',
+    channel: 'DoorDash app', restaurant: 'Taco Palenque · 2350 Paredes Line Rd',
+    legal: 'By signing, you confirm the customer received their DoorDash order in full.',
+    stops: [
+      { n: 'Ana Rodriguez', p: '956-555-0201', a: '2300 Boca Chica Blvd, Apt 3', c: 'Brownsville, TX 78521', items: '1x Chicken Quesadilla Combo\n1x Chips & Queso\n1x Jarritos Mandarin', total: '$24.87', pay: 'Paid online · Visa •• 3910', trk: '8873102941', mode: 'release', note: 'Customer note: leave at front door.' },
+      { n: 'Mark Diaz', p: '956-555-0204', a: '45 E Price Rd', c: 'Brownsville, TX 78520', items: '2x Carne Asada Tacos\n1x Large Fries\n1x Horchata', total: '$31.42', pay: 'Paid online · Visa •• 7742', trk: '7720931845', mode: 'release', note: 'Customer note: leave at front door, do not ring.' },
+      { n: 'Lucy Garza', p: '956-555-0207', a: '780 Alton Gloor Blvd, Apt 7', c: 'Brownsville, TX 78526', items: '1x Chicken Burrito Bowl\n1x Chips & Guac\n1x Mexican Coke', total: '$22.15', pay: 'Paid online · Visa •• 1058', trk: '9901448273', mode: 'sig', note: 'Customer requested hand-off at the door.' }
+    ]
+  },
+  uber: {
+    id: 'uber', kind: 'food', brand: 'Uber Eats', wm: '<span class="wm-uber"><span class="u">Uber</span> <span class="e">Eats</span></span>',
+    sub: 'DELIVERY PARTNER', cls: 'uber', defaultSvc: 'Uber Eats order', unitWord: 'orders', noun: 'order',
+    sigChip: 'Hand to customer', releaseLabel: 'Leave at door',
+    channel: 'Uber Eats app', restaurant: 'Casa de Tacos · 900 E Frontage Rd',
+    legal: 'By signing, you confirm the customer received their Uber Eats order in full.',
+    stops: [
+      { n: 'Elena Cruz', p: '956-555-0210', a: '1120 Old Port Isabel Rd', c: 'Brownsville, TX 78521', items: '2x Cheese Pupusas\n1x Horchata', total: '$18.60', pay: 'Paid online · Visa •• 3301', trk: '4F2A91C8', mode: 'release', note: 'Building entry code 7714. Leave at front door.' },
+      { n: 'Tom Nguyen', p: '956-555-0213', a: '350 Palm Blvd, Apt 2', c: 'Brownsville, TX 78520', items: '1x Combo No. 2 Burger & Fries\n1x Oreo Shake', total: '$21.35', pay: 'Paid online · Visa •• 6620', trk: '9C81B4E2', mode: 'sig', note: 'Customer requested hand-off.' },
+      { n: 'Marissa Lopez', p: '956-555-0216', a: '1800 Southmost Rd', c: 'Brownsville, TX 78521', items: '1x Grilled Chicken Caesar\n1x Lemonade', total: '$17.90', pay: 'Paid online · Visa •• 4483', trk: 'A3F0671D', mode: 'release', note: 'Leave at front porch.' }
+    ]
+  },
+  pizzahut: {
+    id: 'pizzahut', kind: 'food', brand: 'Pizza Hut', wm: '<span class="wm-ph">Pizza <span class="h">Hut</span></span>',
+    sub: 'DELIVERY · ROUTE', cls: 'pizzahut', defaultSvc: 'Pizza Hut order', unitWord: 'orders', noun: 'order',
+    sigChip: 'Sign receipt', releaseLabel: 'Contactless',
+    channel: 'pizzahut.com', restaurant: 'Pizza Hut · 2850 Boca Chica Blvd',
+    legal: 'Signature confirms receipt of the order and the card charge shown on the receipt.',
+    stops: [
+      { n: 'Danny Castillo', p: '956-555-0219', a: '620 E 12th St', c: 'Brownsville, TX 78520', items: '1x Large Pepperoni Pizza\n1x Cheese Bread\n1x 2-Liter Pepsi', total: '$26.87', pay: 'Card at delivery · Visa •• 5522', trk: '120-845-2211', mode: 'sig', note: 'Bring the card receipt for signature.' },
+      { n: 'Rachel Torres', p: '956-555-0222', a: '950 Central Blvd', c: 'Brownsville, TX 78520', items: '2x Medium Cheese Pizzas\n1x Cinnamon Sticks', total: '$29.40', pay: 'Paid online', trk: '120-845-3307', mode: 'release', note: 'Contactless — leave at front door.' },
+      { n: 'Victor Rios', p: '956-555-0225', a: '410 Alton Gloor Blvd', c: 'Brownsville, TX 78526', items: '1x Large Supreme Pizza\n1x Garlic Knots', total: '$24.15', pay: 'Card at delivery · Visa •• 5533', trk: '120-845-8815', mode: 'sig', note: 'Receipt signature required.' }
+    ]
+  },
+  dominos: {
+    id: 'dominos', kind: 'food', brand: 'Domino’s', wm: '<span class="wm-dom">Domino’s</span>',
+    sub: 'DELIVERY · ROUTE', cls: 'dominos', defaultSvc: 'Domino’s order', unitWord: 'orders', noun: 'order',
+    sigChip: 'Sign receipt', releaseLabel: 'Contactless',
+    channel: 'dominos.com', restaurant: 'Domino’s · 1780 Paredes Line Rd',
+    legal: 'Signature confirms receipt of the order and the card charge shown on the receipt.',
+    stops: [
+      { n: 'Selena Guerra', p: '956-555-0228', a: '225 San Jacinto Blvd', c: 'Brownsville, TX 78520', items: '1x Large Handmade Pan Pepperoni\n1x Coca-Cola 2L', total: '$21.80', pay: 'Card at delivery · Visa •• 8841', trk: '3329184471', mode: 'sig', note: 'Sign the receipt copy at delivery.' },
+      { n: 'Omar Pena', p: '956-555-0231', a: '770 W Price Rd', c: 'Brownsville, TX 78520', items: '2x Medium Brooklyn Style Pepperoni\n1x Chocolate Lava Cake', total: '$27.55', pay: 'Paid online', trk: '3329187720', mode: 'release', note: 'Contactless — leave at door.' },
+      { n: 'Iris Salazar', p: '956-555-0234', a: '3050 Boca Chica Blvd, Apt 9', c: 'Brownsville, TX 78521', items: '1x Large ExtravaganZZa\n1x Parmesan Bread Bites', total: '$25.90', pay: 'Card at delivery · Visa •• 4490', trk: '3329181084', mode: 'sig', note: 'Receipt signature required.' }
+    ]
+  },
+  littlecaesars: {
+    id: 'littlecaesars', kind: 'food', brand: 'Little Caesars', wm: '<span class="wm-lc">Little <span class="cae">Caesars</span></span>',
+    sub: 'DELIVERY · ROUTE', cls: 'littlecaesars', defaultSvc: 'Little Caesars order', unitWord: 'orders', noun: 'order',
+    sigChip: 'Sign receipt', releaseLabel: 'Contactless',
+    channel: 'Little Caesars app', restaurant: 'Little Caesars · 3190 Southmost Rd',
+    legal: 'Signature confirms receipt of the order and the card charge shown on the receipt.',
+    stops: [
+      { n: 'Jesse Villanueva', p: '956-555-0237', a: '130 E Levee St', c: 'Brownsville, TX 78520', items: '1x Hot-N-Ready Large Pepperoni\n1x Crazy Bread', total: '$12.99', pay: 'Card at delivery · Visa •• 1209', trk: '884102', mode: 'release', note: 'Leave at front door.' },
+      { n: 'Anna Flores', p: '956-555-0240', a: '660 Palm Blvd', c: 'Brownsville, TX 78520', items: '2x Hot-N-Ready Large Pepperoni\n1x 2-Liter Coke', total: '$23.48', pay: 'Card at delivery · Visa •• 8754', trk: '552783', mode: 'release', note: 'Leave at front door.' },
+      { n: 'Rick Morales', p: '956-555-0243', a: '2200 Paredes Line Rd, Apt 4', c: 'Brownsville, TX 78521', items: '1x Deep!Deep! Dish Pepperoni\n1x Crazy Puffs', total: '$16.75', pay: 'Card at delivery · Visa •• 9917', trk: '190223', mode: 'sig', note: 'Receipt signature required.' }
+    ]
   }
 };
 const ORDER = ['fedex', 'ups', 'usps', 'dhl', 'amazon'];
+const FOOD_ORDER = ['doordash', 'uber', 'pizzahut', 'dominos', 'littlecaesars'];
 
 /* ================= custom recipients (presets) ================= */
 function customTrk(carrierId, presetId) {
@@ -113,7 +174,11 @@ function customTrk(carrierId, presetId) {
   if (carrierId === 'ups') return '1Z999AA1' + str.slice(0, 8);
   if (carrierId === 'usps') return '9400 1099 2100 ' + chunk(str, [4, 4, 2]);
   if (carrierId === 'dhl') return chunk(str, [4, 4, 2]);
-  return 'TBA' + hashStr(presetId + 'x').padStart(12, '0');
+  if (carrierId === 'amazon') return 'TBA' + hashStr(presetId + 'x').padStart(12, '0');
+  if (carrierId === 'doordash' || carrierId === 'uber') return chunk(str, [4, 6]);
+  if (carrierId === 'pizzahut') return chunk(str.slice(0, 7), [3, 4]);
+  if (carrierId === 'dominos') return chunk(str, [4, 4, 2]);
+  return str.slice(0, 6);
 }
 function routeStops(cr) {
   const customs = presets().map(p => ({
@@ -131,6 +196,15 @@ function doneCount(cr) { return Object.keys(doneMap(cr)).length; }
 
 /* ================= timeline ================= */
 function checkpoints(cr) {
+  if (cr.kind === 'food') {
+    const M = m => new Date(Date.now() - m * 60000);
+    return [
+      { t: 'Order placed', d: cr.channel, time: M(72) },
+      { t: 'Restaurant confirmed', d: cr.restaurant, time: M(61) },
+      { t: 'Driver picked up order', d: cr.restaurant, time: M(22) },
+      { t: 'En route to customer', d: 'BROWNSVILLE, TX', time: M(9) }
+    ];
+  }
   const rows = [
     ['Shipment information sent', cr.origin, atDay(routeDay, -2, 18, 22), 'Label created'],
     ['Picked up', cr.origin, atDay(routeDay, -2, 19, 4)],
@@ -146,30 +220,32 @@ function checkpoints(cr) {
 /* ================= views ================= */
 function setCarrierTheme(cid) { document.body.className = cid ? 'c-' + cid : ''; }
 
+function hubCard(cr) {
+  const all = routeStops(cr);
+  const done = all.filter(s => doneMap(cr)[keyOf(s)]).length;
+  const remain = all.length - done;
+  const unit = cr.unitWord || 'deliveries';
+  return `<button class="carrier-card" data-open="${cr.id}" type="button">
+    <span class="cc-mark ${cr.id}">${cr.wm}</span>
+    <span class="cc-info">
+      <span class="cc-name">${cr.brand}</span>
+      <span class="cc-sub">Route with ${all.length} ${unit} · Brownsville, TX</span>
+    </span>
+    <span class="cc-chip">${done ? remain + ' left · ' + done + ' done' : all.length + ' ' + (cr.unitWord ? 'orders' : 'stops')}</span>
+    <svg class="ic cc-arrow"><use href="#i-chev"/></svg>
+  </button>`;
+}
 function renderHub() {
-  const grid = $('#carrier-grid');
-  grid.innerHTML = ORDER.map(id => {
-    const cr = CARRIERS[id];
-    const done = doneCount(cr);
-    const remain = cr.stops.length - done;
-    return `<button class="carrier-card" data-open="${id}" type="button">
-      <span class="cc-mark ${id}">${cr.wm}</span>
-      <span class="cc-info">
-        <span class="cc-name">${cr.brand}</span>
-        <span class="cc-sub">Route with ${cr.stops.length} deliveries · Brownsville, TX</span>
-      </span>
-      <span class="cc-chip">${done ? remain + ' left · ' + done + ' done' : cr.stops.length + ' stops'}</span>
-      <svg class="ic cc-arrow"><use href="#i-chev"/></svg>
-    </button>`;
-  }).join('');
-  $$('#carrier-grid [data-open]').forEach(b => b.onclick = () => openRoute(b.dataset.open));
+  $('#carrier-grid').innerHTML = ORDER.map(id => hubCard(CARRIERS[id])).join('');
+  $('#food-grid').innerHTML = FOOD_ORDER.map(id => hubCard(CARRIERS[id])).join('');
+  $$('.carrier-grid [data-open]').forEach(b => b.onclick = () => openRoute(b.dataset.open));
   const ps = presets();
   $('#preset-slot').innerHTML = `
     <button class="carrier-card" id="btn-presets" type="button">
       <span class="cc-mark" style="background:#475569"><svg class="ic" style="width:26px;height:26px;color:#fff"><use href="#i-person"/></svg></span>
       <span class="cc-info">
         <span class="cc-name">Custom recipients</span>
-        <span class="cc-sub">Add people and addresses once — they appear on every route</span>
+        <span class="cc-sub">Add people and addresses once — they appear on every courier and food route</span>
       </span>
       <span class="cc-chip">${ps.length ? ps.length + ' saved' : 'Set up'}</span>
       <svg class="ic cc-arrow"><use href="#i-chev"/></svg>
@@ -304,13 +380,17 @@ function openRoute(cid) {
   const cr = CARRIERS[cid];
   $('#route-title').textContent = cr.brand + (presets().length ? ' · ' + presets().length + ' custom' : '');
   $('#route-date').textContent = fmtDate(now) + ' · Brownsville, TX';
-  $('#wm-route').innerHTML = wordmarkHTML(cid);
   paintChrome(cid);
   renderRouteList();
   show('view-route');
 }
 
-function windowFor(i) {
+function windowFor(cr, i) {
+  if (cr.kind === 'food') {
+    const s = Date.now() + (4 + i * 12) * 60000;
+    const e = s + 10 * 60000;
+    return fmtTime(new Date(s)) + ' – ' + fmtTime(new Date(e));
+  }
   const s = ROUTE_START.getTime() + (25 + i * 26) * 60000;
   const e = s + 24 * 60000;
   return fmtTime(new Date(s)) + ' – ' + fmtTime(new Date(e));
@@ -324,20 +404,22 @@ function renderRouteList() {
   const remain = stops.length - done;
   $('#stat-left').textContent = remain;
   $('#stat-done').textContent = done;
-  $('#stat-started').textContent = fmtTime(ROUTE_START);
+  $('#stat-started').textContent = cr.kind === 'food' ? fmtTime(new Date(Date.now() - 25 * 60000)) : fmtTime(ROUTE_START);
   $('#route-tag').textContent = remain ? remain + ' TO GO' : 'ROUTE COMPLETE';
   $('#route-tag').style.background = remain ? '' : '#15803d';
   $('#route-foot-text').textContent =
-    'Simulated route. Packages, addresses, and tracking numbers are fictional. Completed stops are stored only in this browser.';
+    'Simulated route. Orders, addresses, and order numbers are fictional. Completed stops are stored only in this browser.';
+  const food = cr.kind === 'food';
   $('#stops-list').innerHTML = stops.map((s, i) => {
     const d = dm[keyOf(s)];
+    const sigBadge = cr.sigChip || 'Signature required';
     const badge = d
       ? '<span class="badge done">Delivered</span>'
       : s.mode === 'release'
         ? '<span class="badge release">' + esc(cr.releaseLabel) + '</span>'
-        : '<span class="badge sig">Signature required</span>';
+        : '<span class="badge sig">' + esc(sigBadge) + '</span>';
     const whoIcon = s.biz ? 'i-bld' : 'i-home';
-    const order = s.custom ? 'Custom stop' : 'Stop ' + (i + 1) + ' of ' + stops.length;
+    const order = s.custom ? (food ? 'Custom order' : 'Custom stop') : (food ? 'Order ' + (i + 1) + ' of ' + stops.length : 'Stop ' + (i + 1) + ' of ' + stops.length);
     return `<button class="stop-card${d ? ' done' : ''}" data-stop="${i}" type="button">
       <div class="stop-top">
         <span class="stop-order">${order}</span>
@@ -350,7 +432,7 @@ function renderRouteList() {
         <span class="trk">${esc(s.trk)}</span>
         ${d
           ? '<span class="svc" style="color:#15803d">Delivered ' + fmtTime(new Date(d.at)) + '</span>'
-          : '<span class="svc">' + esc(s.svc) + ' · ETA ' + windowFor(i) + '</span>'}
+          : '<span class="svc">' + (s.svc ? esc(s.svc) + ' · ' : s.total ? esc(s.total) + ' · ' : '') + 'ETA ' + windowFor(cr, i) + '</span>'}
       </div>
     </button>`;
   }).join('');
@@ -365,20 +447,36 @@ function openStop(i) {
   if (isDone(cr, s)) { openPod(i); return; }
   cur.i = i; cur.arrived = false;
   $('#wm-stop').innerHTML = wordmarkHTML(cur.c);
+  const food = cr.kind === 'food';
+  const sigBadge = cr.sigChip || 'Signature required';
   const badge = s.mode === 'release'
     ? '<span class="badge release">' + esc(cr.releaseLabel) + '</span>'
-    : '<span class="badge sig">Signature required</span>';
+    : '<span class="badge sig">' + esc(sigBadge) + '</span>';
   const whoIcon = s.biz ? 'i-bld' : 'i-home';
   const phoneRow = s.p ? `<div class="row"><span class="k">Phone</span><span class="v"><a class="tel" href="tel:${esc(s.p.replace(/[^0-9+]/g, ''))}">${esc(s.p)}</a></span></div>` : '';
-  const contentsRow = s.label ? `<div class="row"><span class="k">Contents</span><span class="v">${esc(s.label)}</span></div>` : '';
-  const weightRow = s.w ? `<div class="row"><span class="k">Weight</span><span class="v">${esc(s.w)}</span></div>` : '';
+  const svcSuffix = s.custom ? (food ? ' · Custom order' : ' · Custom stop') : '';
+  let rows = '';
+  if (food) {
+    rows += `<div class="row"><span class="k">Order no.</span><span class="v">${esc(s.trk)}</span></div>`;
+    if (s.items) rows += `<div class="row"><span class="k">Items</span><span class="v pre">${esc(s.items)}</span></div>`;
+    else if (s.label) rows += `<div class="row"><span class="k">Items</span><span class="v">${esc(s.label)}</span></div>`;
+    if (s.svc) rows += `<div class="row"><span class="k">Service</span><span class="v">${esc(s.svc)}${svcSuffix}</span></div>`;
+    if (s.total) rows += `<div class="row"><span class="k">Total</span><span class="v">${esc(s.total)}</span></div>`;
+    if (s.pay) rows += `<div class="row"><span class="k">Payment</span><span class="v">${esc(s.pay)}</span></div>`;
+    if (s.rest) rows += `<div class="row"><span class="k">Picked up at</span><span class="v">${esc(s.rest)}</span></div>`;
+  } else {
+    rows += `<div class="row"><span class="k">Tracking no.</span><span class="v">${esc(s.trk)}</span></div>`;
+    if (s.svc) rows += `<div class="row"><span class="k">Service</span><span class="v">${esc(s.svc)}${svcSuffix}</span></div>`;
+    if (s.label) rows += `<div class="row"><span class="k">Contents</span><span class="v">${esc(s.label)}</span></div>`;
+    if (s.w) rows += `<div class="row"><span class="k">Weight</span><span class="v">${esc(s.w)}</span></div>`;
+  }
   $('#stop-body').innerHTML = `
     <div class="stop-body-pad">
       <div class="status-banner">
         <div class="sb-ic"><svg><use href="#i-truck"/></svg></div>
         <div>
-          <div class="sb-big">OUT FOR DELIVERY</div>
-          <div class="sb-small">Delivery window ${windowFor(i)}</div>
+          <div class="sb-big">${food ? 'EN ROUTE' : 'OUT FOR DELIVERY'}</div>
+          <div class="sb-small">Delivery window ${windowFor(cr, i)}</div>
         </div>
       </div>
       <div class="card">
@@ -389,11 +487,8 @@ function openStop(i) {
         <div class="row"><span class="k">Delivery</span><span class="v">${badge}</span></div>
       </div>
       <div class="card">
-        <div class="card-h">Package</div>
-        <div class="row"><span class="k">Tracking no.</span><span class="v">${esc(s.trk)}</span></div>
-        <div class="row"><span class="k">Service</span><span class="v">${esc(s.svc)}${s.custom ? ' · Custom stop' : ''}</span></div>
-        ${contentsRow}
-        ${weightRow}
+        <div class="card-h">${food ? 'Order' : 'Package'}</div>
+        ${rows}
       </div>
       ${s.note ? `<div class="notes"><svg class="ic"><use href="#i-pen"/></svg><span>${esc(s.note)}</span></div>` : ''}
       <button class="big-btn" id="btn-arrive" type="button">
@@ -465,7 +560,11 @@ function openSig() {
   const s = stops[cur.i];
   flow = { stop: cur.i, mode: 'sig', photo: null, camLive: false };
   $('#wm-sig').innerHTML = wordmarkHTML(cur.c);
-  $('#sig-sub').textContent = 'Stop ' + (cur.i + 1) + ' of ' + stops.length + ' · ' + s.n + ' · ' + s.a;
+  const food = cr.kind === 'food';
+  const chip = cr.sigChip || 'Signature required';
+  $('#sig-req-chip').textContent = chip;
+  $('#sig-h2').textContent = chip === 'Sign receipt' ? 'Have the customer sign the receipt' : chip === 'Hand to customer' ? 'Customer signature' : 'Have the customer sign here';
+  $('#sig-sub').textContent = (food ? 'Order ' : 'Stop ') + (cur.i + 1) + ' of ' + stops.length + ' · ' + s.n + ' · ' + s.a;
   $('#sig-name').value = s.n;
   $('#sig-legal').textContent = cr.legal;
   $('#sig-note').textContent = '';
@@ -529,16 +628,18 @@ function openPhoto(mode) {
   const s = stops[cur.i];
   flow = { stop: cur.i, mode, photo: null, camLive: false };
   $('#wm-photo').innerHTML = wordmarkHTML(cur.c);
+  const noun = cr.noun || 'package';
+  const leaveChip = cr.releaseLabel || 'Driver release';
   if (mode === 'leave') {
-    $('#photo-step-chip').textContent = 'Driver release';
-    $('#photo-h').textContent = 'Leave the package at the door';
-    $('#photo-sub').textContent = 'Take a photo showing where the package was left.';
+    $('#photo-step-chip').textContent = leaveChip;
+    $('#photo-h').textContent = 'Leave the ' + noun + ' at the door';
+    $('#photo-sub').textContent = 'Take a photo showing where the ' + noun + ' was left.';
   } else {
     $('#photo-step-chip').textContent = 'Proof of delivery';
     $('#photo-h').textContent = 'Take a photo of the delivery';
-    $('#photo-sub').textContent = 'Show the package at the door after drop-off.';
+    $('#photo-sub').textContent = 'Show the ' + noun + ' at the door after drop-off.';
   }
-  $('#photo-empty-text').textContent = 'Show the package at the door';
+  $('#photo-empty-text').textContent = 'Show the ' + noun + ' at the door';
   stopCam();
   setPhotoStage('empty');
   show('view-photo');
@@ -682,6 +783,19 @@ function openPod(i) {
   const at = new Date(d.at);
   $('#wm-pod').innerHTML = wordmarkHTML(cur.c);
   const isSig = d.mode === 'sig';
+  const food = cr.kind === 'food';
+  let detailRows = '';
+  detailRows += isSig
+    ? `<div class="pod-line"><span class="k">Signed by</span><span class="v">${esc(d.name || '—')}</span></div>`
+    : '';
+  detailRows += `<div class="pod-line"><span class="k">Method</span><span class="v">${isSig ? (food ? 'Signature on receipt' : 'Signature on delivery') : esc(cr.releaseLabel) + ' — left at ' + (cr.noun || 'door')}</span></div>`;
+  detailRows += `<div class="pod-line"><span class="k">${food ? 'Order no.' : 'Tracking no.'}</span><span class="v">${esc(s.trk)}</span></div>`;
+  if (food && s.items) detailRows += `<div class="pod-line"><span class="k">Items</span><span class="v pre">${esc(s.items)}</span></div>`;
+  if (food && s.label) detailRows += `<div class="pod-line"><span class="k">Items</span><span class="v">${esc(s.label)}</span></div>`;
+  if (s.svc) detailRows += `<div class="pod-line"><span class="k">Service</span><span class="v">${esc(s.svc)}</span></div>`;
+  if (s.total) detailRows += `<div class="pod-line"><span class="k">Total</span><span class="v">${esc(s.total)}</span></div>`;
+  if (s.pay) detailRows += `<div class="pod-line"><span class="k">Payment</span><span class="v">${esc(s.pay)}</span></div>`;
+  detailRows += `<div class="pod-line"><span class="k">Address</span><span class="v">${esc(s.a)}, ${esc(s.c)}</span></div>`;
   const photoBlock = d.photo
     ? `<div class="card"><div class="card-h">Proof of delivery photo</div><div class="pod-photo"><img src="${d.photo}" alt="Delivery photo"></div></div>`
     : '';
@@ -698,11 +812,7 @@ function openPod(i) {
       </div>
       <div class="card">
         <div class="card-h">Delivery details</div>
-        ${isSig ? `<div class="pod-line"><span class="k">Signed by</span><span class="v">${esc(d.name || '—')}</span></div>` : ''}
-        <div class="pod-line"><span class="k">Method</span><span class="v">${isSig ? 'Signature on delivery' : esc(cr.releaseLabel) + ' — left at door'}</span></div>
-        <div class="pod-line"><span class="k">Tracking no.</span><span class="v">${esc(s.trk)}</span></div>
-        <div class="pod-line"><span class="k">Service</span><span class="v">${esc(s.svc)}</span></div>
-        <div class="pod-line"><span class="k">Address</span><span class="v">${esc(s.a)}, ${esc(s.c)}</span></div>
+        ${detailRows}
       </div>
       ${sigBlock}
       ${photoBlock}

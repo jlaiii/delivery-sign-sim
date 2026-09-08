@@ -241,6 +241,33 @@ body.c-dhl .primary-btn { color:#fff; }
 .pod-actions { display:flex; flex-direction:column; gap:10px; margin-top: 4px; }
 
 /* ============ toast ============ */
+.hub-sec-label { padding: 20px 18px 2px; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #94a3b8; }
+.hub-sec-label:first-of-type { padding-top: 8px; }
+.hub-sec-label + .carrier-grid { padding-top: 8px; }
+
+/* food brand themes */
+body.c-doordash { --brand:#FF3008; --brand2:#ff6a4d; --accent:#9e1c0a; }
+body.c-uber { --brand:#000000; --brand2:#1c1c1c; --accent:#06C167; }
+body.c-pizzahut { --brand:#d22730; --brand2:#e14a52; --accent:#ffc90c; }
+body.c-dominos { --brand:#006491; --brand2:#1d7fb0; --accent:#e31837; }
+body.c-littlecaesars { --brand:#ed1c24; --brand2:#f05056; --accent:#ffd400; }
+.cc-mark.doordash { background:#FF3008; } .cc-mark.uber { background:#000; }
+.cc-mark.pizzahut { background:#d22730; } .cc-mark.dominos { background:#006491; } .cc-mark.littlecaesars { background:#ed1c24; }
+.wm-doordash { font-size:19px; font-weight:800; color:#fff; letter-spacing:-.01em; }
+.wm-doordash i { font-style:normal; }
+.wm-uber { font-size:19px; font-weight:700; color:#fff; }
+.wm-uber .u { font-weight:700; }
+.wm-uber .e { color:#06C167; font-weight:800; }
+.wm-ph { font-size:19px; font-weight:800; color:#fff; letter-spacing:.01em; }
+.wm-ph .h { color:#ffc90c; }
+.wm-dom { font-size:18px; font-weight:800; color:#fff; letter-spacing:.01em; }
+.wm-dom .apos { font-weight:400; }
+.wm-lc { font-size:16.5px; font-weight:800; color:#fff; letter-spacing:.01em; }
+.wm-lc .cae { color:#ffd400; }
+.v.pre { white-space: pre-line; }
+body.c-uber .big-btn, body.c-littlecaesars .big-btn { color:#0f172a; }
+body.c-uber .flow-step, body.c-littlecaesars .flow-step { color:#0f172a; }
+body.c-uber .primary-btn, body.c-littlecaesars .primary-btn { color:#0f172a; }
 .wm-plain { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
 .preset-card {
   background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:14px;
