@@ -788,7 +788,7 @@ function openPod(i) {
   detailRows += isSig
     ? `<div class="pod-line"><span class="k">Signed by</span><span class="v">${esc(d.name || '—')}</span></div>`
     : '';
-  detailRows += `<div class="pod-line"><span class="k">Method</span><span class="v">${isSig ? (food ? 'Signature on receipt' : 'Signature on delivery') : esc(cr.releaseLabel) + ' — left at ' + (cr.noun || 'door')}</span></div>`;
+  detailRows += `<div class="pod-line"><span class="k">Method</span><span class="v">${isSig ? (food ? 'Signature on receipt' : 'Signature on delivery') : esc(cr.releaseLabel) + ' — left at door'}</span></div>`;
   detailRows += `<div class="pod-line"><span class="k">${food ? 'Order no.' : 'Tracking no.'}</span><span class="v">${esc(s.trk)}</span></div>`;
   if (food && s.items) detailRows += `<div class="pod-line"><span class="k">Items</span><span class="v pre">${esc(s.items)}</span></div>`;
   if (food && s.label) detailRows += `<div class="pod-line"><span class="k">Items</span><span class="v">${esc(s.label)}</span></div>`;
