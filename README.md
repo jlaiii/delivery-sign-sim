@@ -10,6 +10,8 @@ Hyper-realistic package delivery signing simulation that runs entirely in the br
 
 Some stops are "driver release" (leave at door, no signature), just like real routes.
 
+**Custom recipients (presets):** on the home screen, open *Custom recipients* and add people ahead of time — name, phone, street address, delivery type (signature or leave-at-door), and an optional package description. They appear at the top of **every** carrier route with their phone number shown, and when you arrive the stop screen shows who you're delivering to plus a tap-to-call link — then run the signature flow on them. Presets and completed stops persist in the browser.
+
 **Live demo:** https://jlaiii.github.io/package-delivery-sim/
 
 ## What it is

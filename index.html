@@ -26,6 +26,10 @@
   <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   <symbol id="i-bld" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M4 21h16M12 7h4v14h-4M8 9h1m-1 4h1m-1 4h1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v11H2zM13 10h4l4 4v3h-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="1.8" fill="currentColor"/><circle cx="17" cy="17.5" r="1.8" fill="currentColor"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l1.5 4.5L8 10a13 13 0 0 0 6 6l1.5-2.5L20 15v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V5h6v2m-8 0 1 13h8l1-13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
 <div id="toast" hidden></div>
@@ -41,6 +45,7 @@
     <p>Each route is a full delivery day — drive a stop, capture the signature, snap the proof photo, mark it delivered.</p>
   </div>
   <div class="carrier-grid" id="carrier-grid"></div>
+  <div id="preset-slot"></div>
   <div class="hub-foot">
     <p>Simulation for demonstration purposes only. Not affiliated with, endorsed by, or connected to any delivery carrier. No data leaves this device.</p>
     <p>Completed stops are stored only in this browser. Use <button class="link-btn" data-reset>Reset all</button> to clear them and run the demo again.</p>
@@ -135,6 +140,64 @@
       <input type="file" id="file-input" accept="image/*" capture="environment" hidden>
     </div>
     <button class="link-btn center" id="photo-skip" type="button">Continue without a photo</button>
+  </div>
+</div>
+
+<!-- ================= PRESETS (custom recipients) ================= -->
+<div id="view-presets" class="view" hidden>
+  <header class="chrome">
+    <button class="icon-btn" id="preset-back" type="button" aria-label="Back"><svg class="ic"><use href="#i-back"/></svg></button>
+    <div class="wm"><span class="wm-plain">Custom recipients</span><span class="wm-sub">ADDRESS BOOK</span></div>
+    <span class="chrome-spacer"></span>
+  </header>
+  <div class="flow-body">
+    <div class="flow-step" style="background:#475569">Custom recipients</div>
+    <h2 class="flow-h">People you deliver to</h2>
+    <p class="flow-sub">Enter a name, address, and phone once — they appear at the top of every carrier route, ready to sign.</p>
+    <div id="preset-list"></div>
+    <button class="primary-btn" id="preset-new" type="button"><svg class="ic"><use href="#i-plus"/></svg>Add recipient</button>
+    <p class="microcopy">Recipients are stored only in this browser. The phone number shows on the stop screen with a tap-to-call link, like a real driver app.</p>
+  </div>
+</div>
+
+<!-- ================= PRESET EDIT ================= -->
+<div id="view-preset-edit" class="view" hidden>
+  <header class="chrome">
+    <button class="icon-btn" id="pe-cancel" type="button" aria-label="Back"><svg class="ic"><use href="#i-back"/></svg></button>
+    <div class="wm"><span class="wm-plain">Custom recipients</span><span class="wm-sub">EDIT</span></div>
+    <span class="chrome-spacer"></span>
+  </header>
+  <div class="flow-body">
+    <h2 class="flow-h" id="pe-title">Add recipient</h2>
+    <label class="field">
+      <span class="field-label">Full name</span>
+      <input id="pe-name" type="text" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Jane Doe">
+    </label>
+    <label class="field">
+      <span class="field-label">Phone number</span>
+      <input id="pe-phone" type="tel" autocomplete="off" placeholder="(956) 555-0123">
+    </label>
+    <label class="field">
+      <span class="field-label">Street address</span>
+      <input id="pe-street" type="text" autocomplete="off" autocapitalize="words" placeholder="123 Palm Blvd">
+    </label>
+    <label class="field">
+      <span class="field-label">City, State ZIP</span>
+      <input id="pe-city" type="text" autocomplete="off" autocapitalize="words" placeholder="Brownsville, TX 78520">
+    </label>
+    <div class="field">
+      <span class="field-label">Delivery type</span>
+      <div class="seg">
+        <button class="seg-btn" id="pe-mode-sig" type="button"><svg class="ic"><use href="#i-pen"/></svg>Signature required</button>
+        <button class="seg-btn" id="pe-mode-release" type="button"><svg class="ic"><use href="#i-home"/></svg>Leave at door</button>
+      </div>
+    </div>
+    <label class="field">
+      <span class="field-label">Package contents (optional)</span>
+      <input id="pe-label" type="text" autocomplete="off" placeholder="e.g. Amazon box · 4 lb">
+    </label>
+    <button class="primary-btn" id="pe-save" type="button">Save recipient</button>
+    <button class="ghost-btn center" id="pe-cancel-2" type="button">Cancel</button>
   </div>
 </div>
 
